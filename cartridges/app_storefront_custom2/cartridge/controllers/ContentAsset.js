@@ -34,7 +34,7 @@ var ContentMgr = require('dw/content/ContentMgr');
     if (customer.profile) {
         page = PageMgr.getPage(req.querystring.cid + "Logged");
     }
-    if (customer.profile) {
+    if (!customer.profile) {
         page = PageMgr.getPage(req.querystring.cid + "Guest");
     }
 

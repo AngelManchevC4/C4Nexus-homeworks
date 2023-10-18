@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @namespace Home
+ * @namespace ContentSlot
  */
 
 var server = require('server');
@@ -9,15 +9,14 @@ var cache = require('*/cartridge/scripts/middleware/cache');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
 
-
 /**
  * Any customization on this endpoint, also requires update for Default-Start endpoint
  */
 /**
- * Home-Show : This endpoint is called when a shopper navigates to the home page
- * @name Base/Home-Show
+ * ContentSlot-Show : This endpoint is called when a shopper navigates to the ContentSlot page
+ * @name Base/ContentSlot-Show
  * @function
- * @memberof Home
+ * @memberof ContentSlot
  * @param {middleware} - consentTracking.consent
  * @param {middleware} - cache.applyDefaultCache
  * @param {category} - non-sensitive

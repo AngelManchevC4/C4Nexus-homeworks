@@ -4,7 +4,6 @@ var HookMgr = require('dw/system/HookMgr')
 server.extend(module.superModule);
 
 server.append('Show', function (req, res, next) {
-
     var viewData = { msg : 'asd asd' };
     var result; 
 

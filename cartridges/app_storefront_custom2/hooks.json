@@ -1,0 +1,8 @@
+{
+    "hooks": [
+        {
+            "name": "app.home.extendViewData",
+            "script": "~/cartridge/scripts/hooks/home/extendViewData.js"
+        }
+    ]
+}

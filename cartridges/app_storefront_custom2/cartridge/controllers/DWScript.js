@@ -31,10 +31,15 @@ let getProductPricesByProduct = (quantity=0) => {
     return product.getPrice(quantity);
 }
 
-//4
-// let getCatalogMinCategories = ()=>{
-// }
-
+/**
+ * 
+ * @param {dw.catalog.CatalogMgr} catalogID
+ * @returns {object} returns category
+ */
+let getCatalogMainCategories = (catalogID)=>{
+    catalog = CatalogMgr.getCatalog(catalogID);
+    catalog.getRoot();
+}
 
 //5
 /**

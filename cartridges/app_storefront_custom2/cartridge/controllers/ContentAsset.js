@@ -1,7 +1,7 @@
 /**
  * @namespace ContentAsset
  */
-
+// https://zydc-003.dx.commercecloud.salesforce.com/on/demandware.store/Sites-RefArch-Site/default/ContentAsset-Show?cid=2-day-shipping-popup
 var server = require('server');
 
 var cache = require('*/cartridge/scripts/middleware/cache');
@@ -20,14 +20,23 @@ var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
  * @param {renders} - isml
  * @param {serverfunction} - get
  */
+
 server.get('Show', cache.applyDefaultCache, consentTracking.consent, function (req, res, next) {
-    var ContentMgr = require('dw/content/ContentMgr');
+var ContentMgr = require('dw/content/ContentMgr');
     var Logger = require('dw/system/Logger');
     var PageMgr = require('dw/experience/PageMgr');
     var ContentModel = require('*/cartridge/models/content');
     var pageMetaHelper = require('*/cartridge/scripts/helpers/pageMetaHelper');
 
-    var page = PageMgr.getPage(req.querystring.cid);
+    let customer = req.currentCustomer;
+    var page;
+
+    if (customer.profile) {
+        page = PageMgr.getPage(req.querystring.cid + "Logged");
+    }
+    if (customer.profile) {
+        page = PageMgr.getPage(req.querystring.cid + "Guest");
+    }
 
     if (page != null && page.isVisible()) {
         if (!page.hasVisibilityRules()) {
@@ -37,9 +46,18 @@ server.get('Show', cache.applyDefaultCache, consentTracking.consent, function (r
 
         res.page(page.ID, {});
     } else {
-        var apiContent = ContentMgr.getContent(req.querystring.cid);
+
+        var apiContent;
+
+        if (customer.profile) {
+            apiContent = ContentMgr.getContent(req.querystring.cid + "Logged");
+        }
+        if (!customer.profile) {
+            apiContent = ContentMgr.getContent(req.querystring.cid + "Guest");
+        }
 
         if (apiContent) {
+
             var content = new ContentModel(apiContent, 'content/contentAsset');
 
             pageMetaHelper.setPageMetaData(req.pageMetaData, content);

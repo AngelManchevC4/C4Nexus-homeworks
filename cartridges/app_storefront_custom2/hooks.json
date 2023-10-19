@@ -3,6 +3,10 @@
         {
             "name": "app.home.extendViewData",
             "script": "~/cartridge/scripts/hooks/home/extendViewData.js"
+        },
+        {
+            "name": "app.payment.processor.pay_homework",
+            "script": "./cartridge/scripts/hooks/payment/processor/pay_homework"
         }
     ]
 }

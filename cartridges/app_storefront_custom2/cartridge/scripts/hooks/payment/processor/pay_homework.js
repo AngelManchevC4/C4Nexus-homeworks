@@ -35,6 +35,12 @@ function Handle(basket, paymentInformation, paymentMethodID, req) {
     var serverErrors = [];
     var creditCardStatus;
 
+    if (!basket.customerEmail == 'xxx@host.com') {
+        serverErrors.push(
+            Resource.msg('Email Error, email needs to be equal to : xxx@host.com', 'email', null)
+        );
+        return { fieldErrors: [], serverErrors:serverErrors, error: true };
+    }
 
     var cardType = paymentInformation.cardType.value;
     var paymentCard = PaymentMgr.getPaymentCard(cardType);

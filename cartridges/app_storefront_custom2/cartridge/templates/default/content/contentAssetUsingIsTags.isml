@@ -1,0 +1,18 @@
+<isdecorate template="common/layout/page">
+    <!-- dwMarker="content" dwContentID="${pdict.content.UUID}" -->
+
+    <isif condition="${pdict.customer.profile}">
+        <p style="text-align: center;"><span style="font-size:26px;"><span style="background-color:#27ae60;">Customer
+                    with name:
+                    <isprint value="${pdict.customer.profile.firstName}" encoding="off" />
+                    <isprint value="${pdict.content.body}" encoding="off" />
+                </span></span></p>
+    </isif>
+
+    <isif condition="${!pdict.customer.profile}">
+        <p style="text-align: center;"><span style="font-size:26px;"><span style="background-color:#27ae60;">Customer is
+                    not logged in</span></span></p>
+    </isif>
+
+    <!-- END_dwmarker -->
+</isdecorate>

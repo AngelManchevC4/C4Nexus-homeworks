@@ -9,6 +9,7 @@ var server = require('server');
 var cache = require('*/cartridge/scripts/middleware/cache');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
+var { validate } = require('*/cartridge/scripts/customer/validateCustomer');
 
 /**
  * ContentAssetUsingIsTags-Show : This end point will render a content asset in full storefront ContentAssetUsingIsTags
@@ -45,11 +46,15 @@ server.get('Show', cache.applyDefaultCache, consentTracking.consent, function (r
 
         var apiContent;
 
-        if (customer.profile) {
-            apiContent = ContentMgr.getContent(req.querystring.cid + "Logged");
-        } else {
-            apiContent = ContentMgr.getContent(req.querystring.cid + "Guest");
-        }
+        validate(
+            customer.profile,
+            () => {
+                apiContent = ContentMgr.getContent(req.querystring.cid + "Logged");
+            },
+            () => {
+                apiContent = ContentMgr.getContent(req.querystring.cid + "Guest");
+            }
+        );
 
         if (apiContent) {
             var content = new ContentModel(apiContent, 'content/contentAssetUsingIsTags');
@@ -59,10 +64,16 @@ server.get('Show', cache.applyDefaultCache, consentTracking.consent, function (r
 
             var stringifiedContent;
 
-            if (customer.profile) {
-                stringifiedContent = content.body.toString();
-                stringifiedContent = stringifiedContent.replace('{0}', `{${customer.profile.firstName}}`);
-            }
+            validate(
+                customer.profile,
+                () => {
+                    stringifiedContent = content.body.toString();
+                    stringifiedContent = stringifiedContent.replace('{0}', `{${customer.profile.firstName}}`);
+                },
+                () => {
+                    return;
+                }
+            );
 
             if (content.template) {
                 res.render(content.template, { content: content, customer: customer, stringifiedContent: stringifiedContent });

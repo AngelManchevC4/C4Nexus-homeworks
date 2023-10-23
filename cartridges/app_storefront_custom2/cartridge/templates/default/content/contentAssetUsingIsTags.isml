@@ -1,13 +1,11 @@
-<isscript>
-    var content = pdict.content.body.toString();
-    
-    if(pdict.customer.profile.firstName){
-        content = content.replace('{0}',`{${pdict.customer.profile.firstName}}`);
-    }
-</isscript>
-
 <isdecorate template="common/layout/page">
-    ${content}
+
+    <isif condition="${pdict.customer.profile}">
+        <isprint value="${pdict.stringifiedContent}" encoding="off" />
+    <iselse/>
+        <isprint value="${pdict.content.body}" encoding="off" />
+    </isif>
+
 </isdecorate>
 
 <iscomment>
@@ -20,12 +18,11 @@
                         <isprint value="${pdict.customer.profile.firstName}" encoding="off" />
                         <isprint value="${pdict.content.body}" encoding="off" />
                     </span></span></p>
-        </isif>
 
-        <isif condition="${!pdict.customer.profile}">
-            <p style="text-align: center;"><span style="font-size:26px;"><span
-                        style="background-color:#27ae60;">Customer is
-                        not logged in</span></span></p>
+            <iselse>
+                <p style="text-align: center;"><span style="font-size:26px;"><span
+                            style="background-color:#27ae60;">Customer is
+                            not logged in</span></span></p>
         </isif>
 
     </isdecorate>

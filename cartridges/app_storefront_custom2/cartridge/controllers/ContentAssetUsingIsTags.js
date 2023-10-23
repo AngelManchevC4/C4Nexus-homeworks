@@ -42,7 +42,14 @@ server.get('Show', cache.applyDefaultCache, consentTracking.consent, function (r
 
         res.page(page.ID, {});
     } else {
-        var apiContent = ContentMgr.getContent(req.querystring.cid);
+
+        var apiContent;
+
+        if (customer.profile) {
+            apiContent = ContentMgr.getContent(req.querystring.cid + "Logged");
+        } else {
+            apiContent = ContentMgr.getContent(req.querystring.cid + "Guest");
+        }
 
         if (apiContent) {
             var content = new ContentModel(apiContent, 'content/contentAssetUsingIsTags');
@@ -50,8 +57,15 @@ server.get('Show', cache.applyDefaultCache, consentTracking.consent, function (r
             pageMetaHelper.setPageMetaData(req.pageMetaData, content);
             pageMetaHelper.setPageMetaTags(req.pageMetaData, content);
 
+            var stringifiedContent;
+
+            if (customer.profile) {
+                stringifiedContent = content.body.toString();
+                stringifiedContent = stringifiedContent.replace('{0}', `{${customer.profile.firstName}}`);
+            }
+
             if (content.template) {
-                res.render(content.template, { content: content,customer:customer });
+                res.render(content.template, { content: content, customer: customer, stringifiedContent: stringifiedContent });
             } else {
                 Logger.warn('Content asset with ID {0} is offline', req.querystring.cid);
                 res.render('/components/content/offlineContent');

@@ -22,21 +22,15 @@ var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
  */
 
 server.get('Show', cache.applyDefaultCache, consentTracking.consent, function (req, res, next) {
-var ContentMgr = require('dw/content/ContentMgr');
+    var ContentMgr = require('dw/content/ContentMgr');
     var Logger = require('dw/system/Logger');
     var PageMgr = require('dw/experience/PageMgr');
     var ContentModel = require('*/cartridge/models/content');
     var pageMetaHelper = require('*/cartridge/scripts/helpers/pageMetaHelper');
 
     let customer = req.currentCustomer;
-    var page;
 
-    if (customer.profile) {
-        page = PageMgr.getPage(req.querystring.cid + "Logged");
-    }
-    if (!customer.profile) {
-        page = PageMgr.getPage(req.querystring.cid + "Guest");
-    }
+    var page = PageMgr.getPage(req.querystring.cid);
 
     if (page != null && page.isVisible()) {
         if (!page.hasVisibilityRules()) {
@@ -51,8 +45,7 @@ var ContentMgr = require('dw/content/ContentMgr');
 
         if (customer.profile) {
             apiContent = ContentMgr.getContent(req.querystring.cid + "Logged");
-        }
-        if (!customer.profile) {
+        } else {
             apiContent = ContentMgr.getContent(req.querystring.cid + "Guest");
         }
 

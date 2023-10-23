@@ -44,17 +44,15 @@ server.get('Show', cache.applyDefaultCache, consentTracking.consent, function (r
         res.page(page.ID, {});
     } else {
 
-        var apiContent;
-
-        validate(
+        var apiContent = validate(
             customer.profile,
             () => {
-                apiContent = ContentMgr.getContent(req.querystring.cid + "Logged");
+                return ContentMgr.getContent(req.querystring.cid + "Logged");
             },
             () => {
-                apiContent = ContentMgr.getContent(req.querystring.cid + "Guest");
+                return ContentMgr.getContent(req.querystring.cid + "Guest");
             }
-        );
+        );;
 
         if (apiContent) {
             var content = new ContentModel(apiContent, 'content/contentAssetUsingIsTags');
@@ -62,18 +60,16 @@ server.get('Show', cache.applyDefaultCache, consentTracking.consent, function (r
             pageMetaHelper.setPageMetaData(req.pageMetaData, content);
             pageMetaHelper.setPageMetaTags(req.pageMetaData, content);
 
-            var stringifiedContent;
-
-            validate(
+            var stringifiedContent = validate(
                 customer.profile,
                 () => {
                     stringifiedContent = content.body.toString();
-                    stringifiedContent = stringifiedContent.replace('{0}', `{${customer.profile.firstName}}`);
+                    return stringifiedContent.replace('{0}', `{${customer.profile.firstName}}`);
                 },
                 () => {
                     return;
                 }
-            );
+            );;
 
             if (content.template) {
                 res.render(content.template, { content: content, customer: customer, stringifiedContent: stringifiedContent });

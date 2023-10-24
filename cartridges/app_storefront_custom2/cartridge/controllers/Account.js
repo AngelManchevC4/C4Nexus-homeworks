@@ -32,6 +32,7 @@ server.replace(
 
         // DISCUSS ON DAILY
         var TEST = accountModel.profile;
+        var TEST3 = profileForm.customer;
 
         res.render('account/profile', {
             consentApi: Object.prototype.hasOwnProperty.call(req.session.raw, 'setTrackingAllowed'),
@@ -127,8 +128,8 @@ server.replace(
                         profile.setLastName(formInfo.lastName);
                         profile.setEmail(formInfo.email);
                         profile.setPhoneHome(formInfo.phone);
-                        profile.getCustom().fieldInterests = profileForm.customer.fieldinterests.value;
-                        profile.getCustom().countryOfResidence = profileForm.customer.countryofresidence.value;
+                        profile.getCustom().fieldInterests = formInfo.fieldInterests;
+                        profile.getCustom().countryOfResidence = formInfo.countryOfResidence;
                     });
 
                     // Send account edited email

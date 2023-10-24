@@ -4,12 +4,11 @@
         var assets = require('*/cartridge/scripts/assets');
         assets.addJs('/js/productDetail.js');
         assets.addCss('/css/product/detail.css');
-
-        pdict.Product.custom.showPromo = true;
-        var showPromo = pdict.Product.custom.showPromo.;
     </isscript>
 
+
     <isset name="product" value="${pdict.product}" scope="page" />
+    <isset name="showPromo" value="${product.raw.custom.showPromo}" scope="page" />
     <isset name="isQuickView" value="${false}" scope="page" />
     <isset name="isProductSet" value="${pdict.product.productType === 'set'}" scope="page" />
     <isobject object="${product.raw}" view="detail" />
@@ -123,6 +122,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <isif condition="${showPromo}">
                             <p>This product is on sale</p>
                         <iselse/>

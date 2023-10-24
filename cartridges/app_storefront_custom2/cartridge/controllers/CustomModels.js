@@ -19,8 +19,6 @@ var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
  * @memberof CustomModels
  * @param {middleware} - consentTracking.consent
  * @param {middleware} - cache.applyDefaultCache
- * @param {category} - non-sensitive
- * @param {renders} - isml
  * @param {serverfunction} - get
  */
 

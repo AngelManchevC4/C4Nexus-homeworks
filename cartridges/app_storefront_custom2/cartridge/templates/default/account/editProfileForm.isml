@@ -28,7 +28,11 @@
     </label>
     <select class="form-control" id="countryOfResidence" <isprint value="${pdict.profileForm.customer.countryofresidence.attributes}" encoding="off" />>
         <isloop items="${pdict.profileForm.customer.countryofresidence.options}" alias="country" var="index" status="loopstatus">
-            <option id="${country.optionid}" value="${country.value}">${country.label}</option>
+            <isif condition="${pdict.profileForm.customer.countryofresidence.value === country.value}">
+                <option selected id="${country.optionid}" value="${country.value}">${country.label}</option>
+            <iselse/>
+                <option id="${country.optionid}" value="${country.value}">${country.label}</option>
+            </isif>
         </isloop>
     </select>
     <div class="invalid-feedback"></div>

@@ -26,7 +26,7 @@
     <label class="form-control-label" for="countryOfResidence">
         <isprint value="${pdict.profileForm.customer.countryofresidence.label}" encoding="htmlcontent" />
     </label>
-    <select class="form-control" id="countryOfResidence">
+    <select class="form-control" id="countryOfResidence" <isprint value="${pdict.profileForm.customer.countryofresidence.attributes}" encoding="off" />>
         <isloop items="${pdict.profileForm.customer.countryofresidence.options}" alias="country" var="index" status="loopstatus">
             <option id="${country.optionid}" value="${country.value}">${country.label}</option>
         </isloop>
@@ -40,7 +40,7 @@
     <label class="form-control-label" for="fieldInterests">
         <isprint value="${pdict.profileForm.customer.fieldinterests.label}" encoding="htmlcontent" />
     </label>
-    <input type="text" class="form-control" id="fieldInterests" />
+    <input type="text" class="form-control" id="fieldInterests" <isprint value="${pdict.profileForm.customer.fieldinterests.attributes}" encoding="off" /> />
     <div class="invalid-feedback"></div>
 </div>
 

@@ -4,7 +4,6 @@ var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
 var userLoggedIn = require('*/cartridge/scripts/middleware/userLoggedIn');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 
-
 var base = server.extend(module.superModule);
 
 server.replace(
@@ -29,10 +28,6 @@ server.replace(
         profileForm.customer.email.value = accountModel.profile.email;
         profileForm.customer.fieldinterests.value = accountModel.profile.fieldInterests;
         profileForm.customer.countryofresidence.value = accountModel.profile.countryOfResidence;
-
-        // DISCUSS ON DAILY
-        var TEST = accountModel.profile;
-        var TEST3 = profileForm.customer;
 
         res.render('account/profile', {
             consentApi: Object.prototype.hasOwnProperty.call(req.session.raw, 'setTrackingAllowed'),
@@ -167,7 +162,5 @@ server.replace(
         return next();
     }
 );
-
-
 
 module.exports = server.exports();

@@ -1,0 +1,19 @@
+<div class="youtube-banner--container">
+
+    <h2>${pdict.title}</h2>
+
+    <isif condition="${pdict.bannerSize.value == "1"}">
+        <iframe width=100% height="800" src="${pdict.videoID}">
+        </iframe>
+    </isif>
+
+    <isif condition="${pdict.bannerSize.value == "2"}">
+        <iframe width=75% height="600" src="${pdict.videoID}">
+        </iframe>
+    </isif>
+
+    <iframe width=50% height="400" src="${pdict.videoID}">
+    </iframe>
+
+
+</div>

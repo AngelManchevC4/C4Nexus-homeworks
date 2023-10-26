@@ -6,7 +6,7 @@ var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 
 var base = server.extend(module.superModule);
 
-server.replace(
+server.append(
     'EditProfile',
     server.middleware.https,
     csrfProtection.generateToken,
@@ -14,36 +14,17 @@ server.replace(
     consentTracking.consent,
     function (req, res, next) {
         var ContentMgr = require('dw/content/ContentMgr');
-        var Resource = require('dw/web/Resource');
-        var URLUtils = require('dw/web/URLUtils');
         var accountHelpers = require('*/cartridge/scripts/account/accountHelpers');
 
         var accountModel = accountHelpers.getAccountModel(req);
         var content = ContentMgr.getContent('tracking_hint');
-        var profileForm = server.forms.getForm('profile');
-        profileForm.clear();
-        profileForm.customer.firstname.value = accountModel.profile.firstName;
-        profileForm.customer.lastname.value = accountModel.profile.lastName;
-        profileForm.customer.phone.value = accountModel.profile.phone;
-        profileForm.customer.email.value = accountModel.profile.email;
-        profileForm.customer.fieldinterests.value = accountModel.profile.fieldInterests;
-        profileForm.customer.countryofresidence.value = accountModel.profile.countryOfResidence;
+        var viewData = res.getViewData();
 
-        res.render('account/profile', {
-            consentApi: Object.prototype.hasOwnProperty.call(req.session.raw, 'setTrackingAllowed'),
-            caOnline: content ? content.online : false,
-            profileForm: profileForm,
-            breadcrumbs: [
-                {
-                    htmlValue: Resource.msg('global.home', 'common', null),
-                    url: URLUtils.home().toString()
-                },
-                {
-                    htmlValue: Resource.msg('page.title.myaccount', 'account', null),
-                    url: URLUtils.url('Account-Show').toString()
-                }
-            ]
-        });
+        viewData.profileForm.customer.fieldinterests.value = accountModel.profile.fieldInterests;
+        viewData.profileForm.customer.countryofresidence.value = accountModel.profile.countryOfResidence;
+
+        res.setViewData(viewData)
+
         next();
     }
 );
@@ -80,8 +61,8 @@ server.replace(
             email: profileForm.customer.email.value,
             confirmEmail: profileForm.customer.emailconfirm.value,
             password: profileForm.login.password.value,
-            countryOfResidence:profileForm.customer.countryofresidence.value,
-            fieldInterests:profileForm.customer.fieldinterests.value,
+            countryOfResidence: profileForm.customer.countryofresidence.value,
+            fieldInterests: profileForm.customer.fieldinterests.value,
             profileForm: profileForm
         };
         if (profileForm.valid) {

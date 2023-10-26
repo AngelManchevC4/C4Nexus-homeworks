@@ -23,12 +23,26 @@
           "required": false
         },
         {
-          "id":"size",
+          "id":"youtubeBannerSize",
           "name":"Size",
           "description":"The banner size.",
           "type":"enum",
-          "values":["small","medium","large"],
+          "values":["Manual Entry","Small","Medium","Large"],
           "required":true
+        },
+        {
+          "id":"youtubeBannerSizeWidthInput",
+          "name":"Width Size (px)",
+          "description":"The width size of the banner.",
+          "type":"string",
+          "required":false
+        },
+        {
+          "id":"youtubeBannerSizeHeightInput",
+          "name":"Height Size (px)",
+          "description":"The height size of the banner.",
+          "type":"string",
+          "required":false
         }
         ]
       }

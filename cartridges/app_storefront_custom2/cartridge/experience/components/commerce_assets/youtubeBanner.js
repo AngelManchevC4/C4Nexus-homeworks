@@ -11,7 +11,9 @@ module.exports.render = function (context) {
 
     model.videoID = content.id;
     model.title = content.alt;
-    model.bannerSize = content.size;
-    
+    model.bannerSize = content.youtubeBannerSize;
+    model.bannerSizeWidth = content.youtubeBannerSizeWidthInput;
+    model.bannerSizeHeight = content.youtubeBannerSizeHeightInput
+
     return new Template('experience/components/commerce_assets/youtubeBanner').render(model).text;
 };

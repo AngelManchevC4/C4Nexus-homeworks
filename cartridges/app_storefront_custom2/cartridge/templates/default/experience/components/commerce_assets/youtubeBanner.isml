@@ -1,19 +1,20 @@
 <div class="youtube-banner--container">
 
-    <h2>${pdict.title}</h2>
+    <h3>${pdict.title}</h3>
 
-    <isif condition="${pdict.bannerSize.value == "large"}">
+    <isif condition="${pdict.bannerSize == "Large"}">
         <iframe width=100% height="800" src="${pdict.videoID}">
         </iframe>
-    </isif>
-
-    <isif condition="${pdict.bannerSize.value == "medium"}">
+    <iselseif condition="${pdict.bannerSize == "Medium"}" />
         <iframe width=75% height="600" src="${pdict.videoID}">
         </iframe>
+    <iselseif condition="${pdict.bannerSize == "Small"}" />
+        <iframe width=50% height="400" src="${pdict.videoID}">
+        </iframe>
+    <iselse/>
+         <iframe width="${pdict.bannerSizeWidth}" height="${pdict.bannerSizeHeight}" src="${pdict.videoID}">
+        </iframe>
+
     </isif>
-
-    <iframe width=50% height="400" src="${pdict.videoID}">
-    </iframe>
-
 
 </div>

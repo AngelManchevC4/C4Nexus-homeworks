@@ -14,7 +14,7 @@
         <iframe width=50% height="400" src="${pdict.videoID}">
         </iframe>
     <iselse/>
-        <iframe width="${pdict.bannerSizeWidth}" height="${pdict.bannerSizeHeight}" src="${pdict.videoID}">
+        <iframe width="${pdict.bannerSizeWidth}%" height="${pdict.bannerSizeHeight}" src="${pdict.videoID}">
         </iframe>
     </isif>
 

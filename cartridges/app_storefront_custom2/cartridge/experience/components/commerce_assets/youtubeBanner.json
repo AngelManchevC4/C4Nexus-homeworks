@@ -32,15 +32,15 @@
         },
         {
           "id":"youtubeBannerSizeWidthInput",
-          "name":"Width Size (px)",
-          "description":"The width size of the banner.",
+          "name":"Width Size (%)",
+          "description":"The width size of the banner (in percentage).",
           "type":"string",
           "required":false
         },
         {
           "id":"youtubeBannerSizeHeightInput",
           "name":"Height Size (px)",
-          "description":"The height size of the banner.",
+          "description":"The height size of the banner (in pixels).",
           "type":"string",
           "required":false
         }

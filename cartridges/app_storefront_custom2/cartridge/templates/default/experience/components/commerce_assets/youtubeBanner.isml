@@ -2,12 +2,12 @@
 
     <h2>${pdict.title}</h2>
 
-    <isif condition="${pdict.bannerSize.value == "1"}">
+    <isif condition="${pdict.bannerSize.value == "large"}">
         <iframe width=100% height="800" src="${pdict.videoID}">
         </iframe>
     </isif>
 
-    <isif condition="${pdict.bannerSize.value == "2"}">
+    <isif condition="${pdict.bannerSize.value == "medium"}">
         <iframe width=75% height="600" src="${pdict.videoID}">
         </iframe>
     </isif>

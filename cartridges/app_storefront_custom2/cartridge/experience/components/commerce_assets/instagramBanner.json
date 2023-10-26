@@ -1,0 +1,50 @@
+{
+    "name": "instagramBanner",
+    "description": "A banner for instagram posts.",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "image",
+            "name": "Banner Image Configuration",
+            "description": "You can define the image file, size and alt text for the banner image.",
+            "attribute_definitions": [
+                {
+                    "id": "id",
+                    "name": "instagram ID/Link for the video you want to be displayed",
+                    "description": "Field for passing instagram id for the post that you want to be displayed",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "instagramBannerSizeWidthInput",
+                    "name": "Width Size (%)",
+                    "description": "The width size of the banner (in percentage).",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "instagramBannerSizeHeightInput",
+                    "name": "Height Size (px)",
+                    "description": "The height size of the banner (in pixels).",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "alt",
+                    "name": "Post title",
+                    "description": "The youtube video shown by the banner.",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "id": "description",
+                    "name": "Post description",
+                    "description": "Post description.",
+                    "type": "text",
+                    "required": false
+                  }
+            ]
+        }
+    ],
+    "region_definitions": []
+}

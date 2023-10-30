@@ -35,14 +35,14 @@
                     "description": "The youtube video shown by the banner.",
                     "type": "string",
                     "required": true
-                  },
-                  {
+                },
+                {
                     "id": "description",
                     "name": "Post description",
                     "description": "Post description.",
                     "type": "text",
                     "required": false
-                  }
+                }
             ]
         }
     ],

@@ -20,14 +20,14 @@
 
 </div> </iscomment>
 
-<div class="banner">
+<div class="banner-instagram">
 
-    <div class="post">
+    <div class="post-instagram">
         <iframe width="${pdict.bannerSizeWidth}%" height="${pdict.bannerSizeHeight}" src="${pdict.postID}">
         </iframe>
     </div>
 
-    <div class="post-article">
+    <div class="post-instagram--article">
         <h3>${pdict.title}</h3>
         <div>
             <p class="border-right rounded bg-secondary text-white">${pdict.description}</p>

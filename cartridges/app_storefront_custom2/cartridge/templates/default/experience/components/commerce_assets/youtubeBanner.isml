@@ -1,0 +1,21 @@
+<div class="text-center">
+
+    <hr>
+    <h3>${pdict.title}</h3>
+    <hr>
+
+    <isif condition="${pdict.bannerSize == "Large"}">
+        <iframe width=100% height="800" src="${pdict.videoID}">
+        </iframe>
+    <iselseif condition="${pdict.bannerSize == "Medium"}" />
+        <iframe width=75% height="600" src="${pdict.videoID}">
+        </iframe>
+    <iselseif condition="${pdict.bannerSize == "Small"}" />
+        <iframe width=50% height="400" src="${pdict.videoID}">
+        </iframe>
+    <iselse/>
+        <iframe width="${pdict.bannerSizeWidth}%" height="${pdict.bannerSizeHeight}" src="${pdict.videoID}">
+        </iframe>
+    </isif>
+
+</div>

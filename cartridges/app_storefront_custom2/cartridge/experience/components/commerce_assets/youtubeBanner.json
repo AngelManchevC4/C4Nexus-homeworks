@@ -1,0 +1,56 @@
+{
+  "name": "youtubeBanner",
+  "description": "A banner for youtube videos.",
+  "group": "commerce_assets",
+  "attribute_definition_groups": [
+    {
+      "id": "image",
+      "name": "Banner Image Configuration",
+      "description": "You can define the image file, size and alt text for the banner image.",
+      "attribute_definitions": [
+        {
+          "id": "id",
+          "name": "Youtube ID/Link for the video you want to be displayed",
+          "description": "Field for passing youtube id for the video that you want to be displayed",
+          "type": "string",
+          "required": true
+        },
+        {
+          "id": "alt",
+          "name": "Video title",
+          "description": "The youtube video shown by the banner.",
+          "type": "string",
+          "required": false
+        },
+        {
+          "id": "youtubeBannerSize",
+          "name": "Size",
+          "description": "The banner size.",
+          "type": "enum",
+          "values": [
+            "Manual Entry",
+            "Small",
+            "Medium",
+            "Large"
+          ],
+          "required": true
+        },
+        {
+          "id": "youtubeBannerSizeWidthInput",
+          "name": "Width Size (%)",
+          "description": "The width size of the banner (in percentage).",
+          "type": "string",
+          "required": false
+        },
+        {
+          "id": "youtubeBannerSizeHeightInput",
+          "name": "Height Size (px)",
+          "description": "The height size of the banner (in pixels).",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "region_definitions": []
+}

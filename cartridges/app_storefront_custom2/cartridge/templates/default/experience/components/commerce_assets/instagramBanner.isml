@@ -1,0 +1,37 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/experience/components/commerceAssets/instagramBanner.css');
+</isscript>
+
+<iscomment> <div class="d-flex flex-row">
+
+    <div class="w-75 p-2">
+        <iframe width="${pdict.bannerSizeWidth}%" height="${pdict.bannerSizeHeight}" src="${pdict.postID}">
+        </iframe>
+    </div>
+
+    <div class="w-25 p-2 text-center">
+        <h3>${pdict.title}</h3>
+        <div>
+            <p class="border-right rounded bg-secondary text-white">${pdict.description}</p>
+            <p class="hihi">test</p>
+        </div>
+    </div>
+
+</div> </iscomment>
+
+<div class="banner-instagram">
+
+    <div class="post-instagram">
+        <iframe width="${pdict.bannerSizeWidth}%" height="${pdict.bannerSizeHeight}" src="${pdict.postID}">
+        </iframe>
+    </div>
+
+    <div class="post-instagram--article">
+        <h3>${pdict.title}</h3>
+        <div>
+            <p class="border-right rounded bg-secondary text-white">${pdict.description}</p>
+        </div>
+    </div>
+
+</div>

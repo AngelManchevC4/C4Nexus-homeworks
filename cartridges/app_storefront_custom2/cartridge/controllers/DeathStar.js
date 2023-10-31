@@ -7,7 +7,7 @@
 var server = require('server');
 var cache = require('*/cartridge/scripts/middleware/cache');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
-var deathStarService = require('*/cartridge/scripts/deathStarData');
+var deathStarService = require('*/cartridge/scripts/services/deathStarData');
 
 /**
  * Any customization on this endpoint, also requires update for Default-Start endpoint
@@ -28,7 +28,7 @@ server.get('Show', consentTracking.consent, cache.applyDefaultCache, function (r
 
     var deathStarData = JSON.parse(deathStarService.getDeathStarData());
 
-    res.render("DeathStar", { deathStarData: deathStarData })
+    res.render("services/DeathStar", { deathStarData: deathStarData })
 
     next();
 });

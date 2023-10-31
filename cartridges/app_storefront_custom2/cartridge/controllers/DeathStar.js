@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @namespace Home
+ * @namespace DeathStar
  */
 
 var server = require('server');
@@ -13,15 +13,12 @@ var deathStarService = require('*/cartridge/scripts/services/deathStarData');
  * Any customization on this endpoint, also requires update for Default-Start endpoint
  */
 /**
- * Home-Show : This endpoint is called when a shopper navigates to the home page
- * @name Base/Home-Show
+ * DeathStar-Show : This endpoint is called when a shopper navigates to the DeathStar page
+ * @name Base/DeathStar-Show
  * @function
- * @memberof Home
+ * @memberof DeathStar
  * @param {middleware} - consentTracking.consent
  * @param {middleware} - cache.applyDefaultCache
- * @param {category} - non-sensitive
- * @param {renders} - isml
- * @param {serverfunction} - get
  */
 
 server.get('Show', consentTracking.consent, cache.applyDefaultCache, function (req, res, next) {

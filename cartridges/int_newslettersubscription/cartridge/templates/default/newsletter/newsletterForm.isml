@@ -8,6 +8,9 @@
     <form id="newsletterSubscribeForm" class="newsletterForm border border-dark rounded"
         action="${URLUtils.url('Newsletter-Subscribe')}" method="POST">
 
+        <h1>Newsletter Subscribtion</h1>
+        <hr>
+
         <div class="form-row">
             <div class="form-group col-md-6 <isif condition=" ${pdict.newsletterForm.firstname.mandatory === true}">
                 required</isif>">
@@ -45,13 +48,11 @@
                 <label for="inputGender">
                     <isprint value="${pdict.newsletterForm.gender.label}" encoding="htmlcontent" />
                 </label>
-                <select id="inputGender" class="form-control">
-                    <isloop items="${pdict.newsletterForm.gender.options}" alias="gender" var="index"
-                        status="loopstatus">
-
-                        <option id="${gender.optionid}" value="${gender.value}">${gender.label}</option>
-
-                    </isloop>
+                <select id="inputGender" class="form-control" <isprint value="${pdict.newsletterForm.gender.attributes}"
+                    encoding="off" />>
+                <isloop items="${pdict.newsletterForm.gender.options}" alias="gender" var="index" status="loopstatus">
+                    <option value="${gender.value}">${gender.label}</option>
+                </isloop>
                 </select>
             </div>
 

@@ -10,7 +10,7 @@ var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
 
 
-server.get('Show', server.middleware.https,csrfProtection.generateToken ,consentTracking.consent, function (req, res, next) {
+server.get('Show', server.middleware.https, csrfProtection.generateToken, consentTracking.consent, function (req, res, next) {
     var Resource = require('dw/web/Resource');
     var URLUtils = require('dw/web/URLUtils');
 
@@ -34,7 +34,6 @@ server.post(
         var CustomerMgr = require('dw/customer/CustomerMgr');
         var Resource = require('dw/web/Resource');
         var URLUtils = require('dw/web/URLUtils');
-        // 1
 
         var type = "Newsletter-Homework";
 
@@ -42,7 +41,7 @@ server.post(
 
         var newsletterForm = server.forms.getForm('newsletter');
         var form = newsletterForm;
-        var newsletterResult = CustomObjectMgr.getCustomObject(type,newsletterForm.email.value);
+        var newsletterResult = CustomObjectMgr.getCustomObject(type, newsletterForm.email.value);
 
         if (newsletterForm.valid) {
             Transaction.wrap(function () {

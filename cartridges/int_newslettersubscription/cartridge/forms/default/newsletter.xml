@@ -31,7 +31,7 @@
 		type="string" />
 
 	<field formid="gender" label="label.input.gender.profile" type="string"
-		missing-error="error.message.country.residence.missing">
+		missing-error="error.message.gender.missing">
 		<options>
 			<option optionid="none" label="gender.none" value="None" />
 			<option optionid="Male" label="gender.male" value="Male" />

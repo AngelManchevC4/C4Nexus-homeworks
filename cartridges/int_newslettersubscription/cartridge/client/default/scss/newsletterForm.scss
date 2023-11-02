@@ -1,0 +1,24 @@
+main {
+    text-align: center;
+}
+
+title {}
+
+.newsletterForm {
+    width: 25%;
+    height: 30rem;
+    margin: auto;
+    padding: 1rem;
+    margin: 1rem auto;
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    justify-content: center;
+
+    button {
+        margin: 0 0.5rem;
+    }
+}

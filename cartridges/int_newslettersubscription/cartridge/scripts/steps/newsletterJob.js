@@ -31,7 +31,7 @@ module.exports.execute = function () {
 
     } catch (e) {
         var logger = Logger.getLogger("error.newsletter.job");
-        logger.info("Newsletter Job Error", e);
+        logger.error("Newsletter Job Error", e);
     } finally {
         csv.close();
         fileWrite.close();

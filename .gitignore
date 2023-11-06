@@ -26,6 +26,8 @@ cartridges/app_storefront_base/cartridge/static/en_GB/fonts/
 cartridges/app_storefront_custom2/cartridge/templates/default/telerik/
 cartridges/app_storefront_custom2/cartridge/controllers/Telerik.js
 
+cartridges/int_newslettersubscription/cartridge/static
+
 npm-debug.log
 cartridges.zip
 .idea/

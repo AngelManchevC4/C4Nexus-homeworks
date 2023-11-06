@@ -9,6 +9,7 @@ var cache = require('*/cartridge/scripts/middleware/cache');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 var deathStarService = require('*/cartridge/scripts/services/deathStarData');
 
+
 /**
  * Any customization on this endpoint, also requires update for Default-Start endpoint
  */
@@ -22,10 +23,15 @@ var deathStarService = require('*/cartridge/scripts/services/deathStarData');
  */
 
 server.get('Show', consentTracking.consent, cache.applyDefaultCache, function (req, res, next) {
+    var Site = require('dw/system/Site');
+    var currentSite = Site.getCurrent();
+    var swapiPreference = currentSite.getCustomPreferenceValue('enableSWAPI');
 
-    var deathStarData = JSON.parse(deathStarService.getDeathStarData());
+    if(swapiPreference){
+        var deathStarData = JSON.parse(deathStarService.getDeathStarData());
 
-    res.render("services/DeathStar", { deathStarData: deathStarData })
+        res.render("services/DeathStar", { deathStarData: deathStarData })
+    }
 
     next();
 });

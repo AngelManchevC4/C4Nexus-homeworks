@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19" secure="false">
+	<field
+		formid="firstname"
+		label="label.input.firstname.profile"
+		mandatory="true"
+		max-length="50"
+		missing-error="error.message.required"
+		range-error="error.message.50orless"
+		type="string" />
+
+	<field
+		formid="lastname"
+		label="label.input.lastname.profile"
+		mandatory="true"
+		max-length="50"
+		missing-error="error.message.required"
+		range-error="error.message.50orless"
+		type="string" />
+
+	<field
+		formid="email"
+		label="label.input.email.profile"
+		mandatory="true"
+		max-length="50"
+		missing-error="error.message.required"
+		parse-error="error.message.parse.email.profile.form"
+		range-error="error.message.50orless"
+		regexp="^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$"
+		value-error="ValueErrorText"
+		type="string" />
+
+	<field formid="gender" label="label.input.gender.profile" type="string"
+		missing-error="error.message.gender.missing">
+		<options>
+			<option optionid="none" label="gender.none" value="None" />
+			<option optionid="Male" label="gender.male" value="Male" />
+			<option optionid="Female" label="gender.female" value="Female" />
+			<option optionid="Other" label="gender.other" value="Other" />
+		</options>
+	</field>
+
+	<field
+		formid="subscribe"
+		label="label.button.newsletter.subscribe"
+		type="string" />
+
+	<field
+		formid="cancel"
+		label="label.button.newsletter.cancel"
+		type="string" />
+
+</form>

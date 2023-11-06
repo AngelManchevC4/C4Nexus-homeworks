@@ -1,0 +1,11 @@
+{
+    "step-types": {
+        "script-module-step": [
+            {
+                "@type-id": "custom.newsletterExtractAndDelete",
+                "description": "Script for exporting newsletters subscribtions and deleting it after export",
+                "module": "int_newslettersubscription/cartridge/scripts/steps/newsletterJob"
+            }
+        ]
+    }
+}

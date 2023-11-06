@@ -1,0 +1,87 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/newsletterForm.css');
+</isscript>
+
+<isdecorate template="common/layout/page">
+
+    <form id="newsletterSubscribeForm" class="newsletterForm border border-dark rounded"
+        action="${URLUtils.url('Newsletter-Subscribe')}" method="POST">
+
+        <h1>Newsletter Subscribtion</h1>
+        <hr>
+
+        <div class="form-row">
+            <div class="form-group col-md-6 <isif condition=" ${pdict.newsletterForm.firstname.mandatory === true}">
+                required</isif>">
+                <label for="firstName">
+                    <isprint value="${pdict.newsletterForm.firstname.label}" encoding="htmlcontent" />
+                </label>
+                <input type="text" class="form-control" id="firstName"
+                    placeholder="${pdict.newsletterForm.firstname.label}" <isprint
+                    value="${pdict.newsletterForm.firstname.attributes}" encoding="off" />>
+            </div>
+            <div class="form-group col-md-6 <isif condition=" ${pdict.newsletterForm.lastname.mandatory === true}">
+                required</isif>">
+                <label for="lastName">
+                    <isprint value="${pdict.newsletterForm.lastname.label}" encoding="htmlcontent" />
+                </label>
+                <input type="text" class="form-control" id="lastName"
+                    placeholder="${pdict.newsletterForm.lastname.label}" <isprint
+                    value="${pdict.newsletterForm.lastname.attributes}" encoding="off" />>
+            </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-8 <isif condition=" ${pdict.newsletterForm.email.mandatory === true}">required
+                </isif>">
+                <label for="inputEmail4">
+                    <isprint value="${pdict.newsletterForm.email.label}" encoding="htmlcontent" />
+                </label>
+                <input type="email" class="form-control" id="inputEmail4"
+                    placeholder="${pdict.newsletterForm.email.label}" <isprint
+                    value="${pdict.newsletterForm.email.attributes}" encoding="off" />>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="inputGender">
+                    <isprint value="${pdict.newsletterForm.gender.label}" encoding="htmlcontent" />
+                </label>
+                <select id="inputGender" class="form-control" <isprint value="${pdict.newsletterForm.gender.attributes}"
+                    encoding="off" />>
+                <isloop items="${pdict.newsletterForm.gender.options}" alias="gender" var="index" status="loopstatus">
+                    <option value="${gender.value}">${gender.label}</option>
+                </isloop>
+                </select>
+            </div>
+
+        </div>
+
+        <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}" />
+
+        <div class="buttonsContainer">
+            <button class="btn btn-success" type="submit">${pdict.newsletterForm.subscribe.label}</button>
+            <a href="${URLUtils.url('Home-Show')}" class="btn btn-danger">${pdict.newsletterForm.cancel.label}</a>
+        </div>
+
+        <div id="newsletterFormAlert" class="alert alert-success mt-3 text-center" role="alert">
+            You've just subscribed for our newsletter
+        </div>
+
+    </form>
+
+</isdecorate>
+
+<script>
+
+    let newsletterForm = document.getElementById('newsletterSubscribeForm');
+    let newsletterAlert = document.getElementById('newsletterFormAlert');
+
+    newsletterForm.addEventListener('submit',function(){
+        newsletterFormAlert.style.display="block";
+    })
+    
+    newsletterFormAlert.style.display="none";
+
+</script>

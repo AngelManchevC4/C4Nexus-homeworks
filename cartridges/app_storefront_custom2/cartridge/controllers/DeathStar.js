@@ -27,7 +27,7 @@ server.get('Show', consentTracking.consent, cache.applyDefaultCache, function (r
     var currentSite = Site.getCurrent();
     var swapiPreference = currentSite.getCustomPreferenceValue('enableSWAPI');
 
-    if(swapiPreference){
+    if (swapiPreference) {
         var deathStarData = JSON.parse(deathStarService.getDeathStarData());
 
         res.render("services/DeathStar", { deathStarData: deathStarData })

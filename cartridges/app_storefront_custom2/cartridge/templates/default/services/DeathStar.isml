@@ -1,0 +1,7 @@
+<isset name="deathStar" value="${pdict.deathStarData}" scope="page" />
+
+<div class="text-center">
+    <h1>${deathStar.name}</h1>
+    <h3>Manufactured by: <span class="text-info">${deathStar.manufacturer}</span> </h3>
+    <h3>Class : <span class="text-info">${deathStar.starship_class} </span></h3>
+</div>
